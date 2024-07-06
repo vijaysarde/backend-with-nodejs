@@ -1,13 +1,13 @@
-const emailServicePrdURL = 'https://services.api.my-app.com/proxy/notification/v1/mail';
+const emailServicePrdURL = 'https://services.api.my-app.com/v2/email';
 
 const emailServiceUri = {
-    dev: 'https://services.dev.api.my-app.com/proxy/notification/v1/mail',
-    qa: 'https://services.qa.api.my-app.com/proxy/notification/v1/mail',
-    stg: 'https://services.stg.api.my-app.com/proxy/notification/v1/mail',
-    perf: 'https://services.perf.api.my-app.com/proxy/notification/v1/mail',
+    dev: 'https://services.dev.api.my-app.com/v2/email',
+    qa: 'https://services.qa.api.my-app.com/v2/email',
+    stg: 'https://services.stg.api.my-app.com/v2/email',
+    perf: 'https://services.perf.api.my-app.com/v2/email',
     prdInt: emailServicePrdURL,
     prd: emailServicePrdURL,
-    dr: 'https://services.dr.api.my-app.com/proxy/notification/v1/mail',
+    dr: 'https://services.dr.api.my-app.com/v2/email',
 }
 
 function getEmailServiceUri(env){
