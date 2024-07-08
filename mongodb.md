@@ -1,3 +1,42 @@
+# Mongo DB
+
+## Spin mongodb and mongo-express containers
+```
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb-container
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin_password
+    volumes:
+      - ./mogodb_data:/data/db
+    networks:
+      - mongo-network
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express-container
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin_password
+    depends_on:
+      - mongodb
+    networks:
+      - mongo-network
+
+networks:
+  mongo-network:
+    driver: bridge
+```
+
 ## MongoDB with mongoose
 
 ### Methods in Mongoose
