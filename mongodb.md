@@ -112,8 +112,14 @@ Updates one or multiple documents that match the query criteria.
 ```javascript
 const result = await User.updateOne(
   { username: "johndoe" },
-  { email: "updatedemail@example.com" }
+  { $set: { email: "updatedemail@example.com" } }
 );
+
+db.users.updateOne(
+  { username: "johndoe" }, // Filter criteria
+  { $set: { email: "updatedemail@example.com" } } // Update operation using $set operator
+);
+
 
 const result = await User.updateMany(
   { age: { $gte: 25 } },
