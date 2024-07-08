@@ -51,6 +51,18 @@ Or you can set express password by adding below env var
 // Login to MongoDB Container
 mongosh -u admin -p admin_password --authenticationDatabase admin
 
+// login to db called 'vijay' with its username and password
+// mongosh -u vijayuser -p vijay_password --authenticationDatabase vijay
+// mongosh --host localhost -u vijayuser -p vijay_password --authenticationDatabase vijay
+
+// mongosh --host localhost -u admin -p admin_password admin --authenticationDatabase 'admin' --quiet --eval "db.getCollectionNames()"
+
+// diplay vijay collection names using admin credentials
+// mongosh --host localhost -u admin -p admin_password vijay --authenticationDatabase 'admin' --quiet --eval "db.getCollectionNames()"
+
+// diplay vijay collection names using vijayuser credentials
+// mongosh --host localhost -u vijayuser -p vijay_password vijay --authenticationDatabase 'vijay' --quiet --eval "db.getCollectionNames()"
+
 // show the dbs
 show dbs
 
