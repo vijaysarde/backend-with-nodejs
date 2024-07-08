@@ -39,6 +39,13 @@ networks:
 Note - access mongo-express on `http://localhost:8081`, use `admin:pass` as credentials or see the container logs for the same
 `2024-07-08 13:50:52 basicAuth credentials are "admin:pass", it is recommended you change this in your config.js!`
 
+Or you can set express password by adding below env var
+```
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+```
+
 ### exec in mongodb-container
 ```
 // Login to MongoDB Container
