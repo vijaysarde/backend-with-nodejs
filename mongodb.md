@@ -37,6 +37,25 @@ networks:
     driver: bridge
 ```
 
+### exec in mongodb-container
+```
+// Login to MongoDB Container
+mongosh -u admin -p admin_password --authenticationDatabase admin
+
+// show the dbs
+show dbs
+
+// select the db
+use vijay
+
+// create user and provide the role
+db.createUser({
+    user: "vijayuser",
+    pwd: "vijay_password",
+    roles: [{ role: "readWrite", db: "vijay" }]
+  })
+```
+
 ## MongoDB with mongoose
 
 ### Methods in Mongoose
