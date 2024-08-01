@@ -40,7 +40,7 @@ pipeline {
                                 string(name: 'BRANCH_NAME', value: branchName),
                                 booleanParam(name: 'BUILD_ENABLED', value: buildEnabled),
                                 text(name: 'DESCRIPTION', value: description),
-                                [$class: 'FileParameterValue', name: 'CONFIG_FILE', value: configFile],
+                                file(name: 'CONFIG_FILE', value: configFile),
                                 choice(name: 'ENVIRONMENT', choices: ['production', 'staging', 'development'], description: 'Choose the environment'),
                                 password(name: 'SECRET_KEY', value: secretKey)
                             ]
