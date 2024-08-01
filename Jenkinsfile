@@ -5,13 +5,11 @@ pipeline {
             steps {
                 script {
                     node() {
-                        checkout scm
-                        sh '''
-                            pwd
-                            echo $BRANCH_NAME
-                            ls -l
-                            env
-                        '''
+                        def gitUrl = sh(script: 'git config --get remote.origin.url', returnStdout: true).trim()
+                        def branchName = env.BRANCH_NAME ?: sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
+    
+                        echo "Git URL: ${gitUrl}"
+                        echo "Branch Name: ${branchName}"
                     }
                 }
             }
