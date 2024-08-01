@@ -16,7 +16,7 @@ pipeline {
                             // Checkout the SCM repository
                             checkout scm
 
-                            echo "NODE_NAME: $NODE_NAME
+                            echo "NODE_NAME: $NODE_NAME"
 
                             // Get Git URL and branch name
                             def gitUrl = sh(script: 'git config --get remote.origin.url', returnStdout: true).trim()
