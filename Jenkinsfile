@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        node('master') {
+                        node() {
                             // Checkout the SCM repository
                             checkout scm
 
