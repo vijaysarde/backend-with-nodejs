@@ -22,7 +22,6 @@ pipeline {
                             // Define additional parameters if needed
                             def buildEnabled = true
                             def description = 'This is a detailed description.'
-                            def configFile = "Jenkinsfile"
                             def environment = 'production'
                             def secretKey = 'supersecretpassword'
 
@@ -40,7 +39,6 @@ pipeline {
                                 string(name: 'BRANCH_NAME', value: branchName),
                                 booleanParam(name: 'BUILD_ENABLED', value: buildEnabled),
                                 text(name: 'DESCRIPTION', value: description),
-                                file(name: 'CONFIG_FILE', value: configFile),
                                 choice(name: 'ENVIRONMENT', choices: ['production', 'staging', 'development'], description: 'Choose the environment'),
                                 password(name: 'SECRET_KEY', value: secretKey)
                             ]
