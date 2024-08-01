@@ -11,9 +11,11 @@ pipeline {
             steps {
                 script {
                     try {
-                        node('UPSTREAM_PROCESSOR') {
+                        node('master') {
                             // Checkout the SCM repository
                             checkout scm
+
+                            echo $NODE_NAME
 
                             // Get Git URL and branch name
                             def gitUrl = sh(script: 'git config --get remote.origin.url', returnStdout: true).trim()
