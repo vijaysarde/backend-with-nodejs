@@ -26,7 +26,9 @@ pipeline {
                             def environment = 'production'
                             def secretKey = 'supersecretpassword'
 
-                            sh 'cat $configFile'
+                            env.configFile = configFile
+
+                            sh 'cat ${env.configFile}'
 
                             // Define job parameters using environment variables and other parameters
                             def jobParameters = [
