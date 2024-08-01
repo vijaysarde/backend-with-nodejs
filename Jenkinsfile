@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         DOWNSTREAM_JOB_NAME = 'single'
-        GIT_URL = sh(script: 'git config --get remote.origin.url', returnStdout: true).trim()
-        BRANCH_NAME = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
+        GIT_URL = 'url'
+        BRANCH_NAME = 'test'
     }
 
     stages {
