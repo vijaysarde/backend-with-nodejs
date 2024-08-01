@@ -13,7 +13,7 @@ pipeline {
                     try {
                         node() {
                             // Checkout the SCM repository
-                            // checkout scm
+                            checkout scm
 
                             // Get Git URL and branch name
                             def branchName = env.BRANCH_NAME ?: sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
