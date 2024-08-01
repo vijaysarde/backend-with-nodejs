@@ -26,9 +26,9 @@ pipeline {
                             def environment = 'production'
                             def secretKey = 'supersecretpassword'
 
-                            env.configFile = configFile
+                            
 
-                            sh 'cat ${env.configFile}'
+                            sh 'cat ${env.WORKSPACE}/Jenkinsfile'
 
                             // Define job parameters using environment variables and other parameters
                             def jobParameters = [
