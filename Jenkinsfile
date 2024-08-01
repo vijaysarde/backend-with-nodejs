@@ -6,7 +6,12 @@ pipeline {
                 script {
                     node() {
                         checkout scm
-                        sh 'env'
+                        sh '''
+                            pwd
+                            echo $BRANCH_NAME
+                            ls -l
+                            env
+                        '''
                     }
                 }
             }
