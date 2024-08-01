@@ -16,6 +16,8 @@ pipeline {
                             // Checkout the SCM repository
                             // checkout scm
 
+                            sh 'env'
+
                             echo "NODE_NAME: $NODE_NAME"
 
                             // Get Git URL and branch name
