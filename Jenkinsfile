@@ -2,7 +2,9 @@ pipeline {
     agent none
 
     environment {
-        DOWNSTREAM_JOB_NAME = 'downstream-pipeline'
+        DOWNSTREAM_JOB_NAME = 'single'
+        GIT_URL = sh(script: 'git config --get remote.origin.url', returnStdout: true).trim()
+        BRANCH_NAME = env.BRANCH_NAME ?: sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
     }
 
     stages {
@@ -13,11 +15,11 @@ pipeline {
                         node() {
                             checkout scm
                             
-                            def gitUrl = sh(script: 'git config --get remote.origin.url', returnStdout: true).trim()
-                            def branchName = env.BRANCH_NAME ?: sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
+                            echo "Git URL: ${env.GIT_URL}"
+                            echo "Branch Name: ${env.BRANCH_NAME}"
                             def jobParameters = [
-                                [$class: 'StringParameterValue', name: 'GIT_URL', value: gitUrl],
-                                [$class: 'StringParameterValue', name: 'BRANCH_NAME', value: branchName]
+                                string(name: 'GIT_URL', value: env.GIT_URL),
+                                string(name: 'BRANCH_NAME', value: env.BRANCH_NAME),
                             ]
                             
                             build job: "${env.DOWNSTREAM_JOB_NAME}", propagate: true, parameters: jobParameters
