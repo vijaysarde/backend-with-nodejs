@@ -22,7 +22,7 @@ pipeline {
                             // Define additional parameters if needed
                             def buildEnabled = true
                             def description = 'This is a detailed description.'
-                            def configFile = './Jenkinsfile'
+                            def configFile = '${env.WORKSPACE}/Jenkinsfile'
                             def environment = 'production'
                             def secretKey = 'supersecretpassword'
 
