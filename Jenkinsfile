@@ -10,6 +10,7 @@ pipeline {
     
                         echo "Git URL: ${gitUrl}"
                         echo "Branch Name: ${branchName}"
+                        echo $BRANCH_NAME
                     }
                 }
             }
