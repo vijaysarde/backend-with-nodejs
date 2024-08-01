@@ -14,7 +14,7 @@ pipeline {
                     try {
                         node() {
                             // Checkout the SCM repository
-                            checkout scm
+                            // checkout scm
 
                             echo "NODE_NAME: $NODE_NAME"
 
