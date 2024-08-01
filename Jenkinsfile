@@ -2,7 +2,6 @@ pipeline {
     agent none
 
     environment {
-        // Define the downstream job name in an environment variable for reusability
         DOWNSTREAM_JOB_NAME = 'single'
     }
 
@@ -12,27 +11,12 @@ pipeline {
                 script {
                     try {
                         node() {
-                            // Checkout the SCM repository
                             checkout scm
-
-                            // Get Git URL and branch name dynamically
                             def gitUrl = sh(script: 'git config --get remote.origin.url', returnStdout: true).trim()
                             def branchName = env.BRANCH_NAME ?: sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
-                            
-                            // Define additional parameters if needed
                             def buildEnabled = true
                             def description = 'This is a detailed description.'
                             def secretKey = 'supersecretpassword'
-
-                            sh '''
-                                pwd
-                                ls
-                                echo $WORKSPACE
-                            '''
-
-    
-
-                            // Define job parameters using environment variables and other parameters
                             def jobParameters = [
                                 string(name: 'GIT_URL', value: gitUrl),
                                 string(name: 'BRANCH_NAME', value: branchName),
@@ -40,8 +24,7 @@ pipeline {
                                 text(name: 'DESCRIPTION', value: description),
                                 password(name: 'SECRET_KEY', value: secretKey)
                             ]
-
-                            // Trigger the downstream job with parameters
+                            
                             build job: "${env.DOWNSTREAM_JOB_NAME}", propagate: true, parameters: jobParameters
                         }
                     } catch (Exception e) {
