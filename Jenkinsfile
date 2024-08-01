@@ -26,6 +26,12 @@ pipeline {
                             def environment = 'production'
                             def secretKey = 'supersecretpassword'
 
+                            sh '''
+                                pwd
+                                ls
+                                echo $WORKSPACE
+                            '''
+
     
 
                             // Define job parameters using environment variables and other parameters
