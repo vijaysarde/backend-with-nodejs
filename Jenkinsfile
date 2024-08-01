@@ -39,7 +39,7 @@ pipeline {
                                 string(name: 'BRANCH_NAME', value: branchName),
                                 booleanParam(name: 'BUILD_ENABLED', value: buildEnabled),
                                 text(name: 'DESCRIPTION', value: description),
-                                choice(name: 'ENVIRONMENT', choices: ['production', 'staging', 'development'], description: 'Choose the environment'),
+                                [$class: 'ChoiceParameterValue', name: 'ENVIRONMENT', value: ['production'], description: 'Choose the environment'],
                                 password(name: 'SECRET_KEY', value: secretKey)
                             ]
 
